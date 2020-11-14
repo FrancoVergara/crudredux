@@ -11,7 +11,7 @@ export function createNewProductAction(product){
         try {
             dispatch( addProductSuccess(product) )
         } catch (error) {
-            
+            dispatch( addProductError() )
         }
     }
 }
@@ -23,4 +23,8 @@ const addProduct = () => ({
 const addProductSuccess = product => ({
     type: ADD_PRODUCT_SUCCESS,
     payload: product
+})
+
+const addProductError = () => ({
+    type: ADD_PRODUCT_ERROR
 })

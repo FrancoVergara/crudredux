@@ -26,6 +26,13 @@ export default (state = initialState, action) => {
                 product: [...state.products, action.payload]
             }
 
+        case ADD_PRODUCT_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: true
+            }
+
         default:
             return state;
     }
