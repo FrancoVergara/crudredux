@@ -24,6 +24,11 @@
       "id": 5,
       "name": "Jugo de Fresa",
       "price": "200"
+    },
+    {
+      "name": "Asado",
+      "price": "460",
+      "id": 6
     }
   ]
 }
