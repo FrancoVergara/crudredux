@@ -13,6 +13,19 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case ADD_PRODUCT:
+            return {
+                ...state,
+                loading: true
+            }
+
+        case ADD_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                product: [...state.products, action.payload]
+            }
+
         default:
             return state;
     }

@@ -5,7 +5,22 @@ import {
 } from '../types'
 
 export function createNewProductAction(product){
-    return () => {
-        console.log(product)
+    return (dispatch) => {
+        dispatch( addProduct() )
+
+        try {
+            dispatch( addProductSuccess(product) )
+        } catch (error) {
+            
+        }
     }
 }
+
+const addProduct = () => ({
+    type: ADD_PRODUCT
+})
+
+const addProductSuccess = product => ({
+    type: ADD_PRODUCT_SUCCESS,
+    payload: product
+})
