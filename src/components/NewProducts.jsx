@@ -4,10 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 // Actions de redux
 import { createNewProductAction } from '../actions/productsAction';
 
-const NewProducts = () => {
+const NewProducts = ({history}) => {
 
     const [ name, saveName ] = useState('')
     const [ price, savePrice ] = useState(0)
+
+    // Acceder al state del store
+    const loading = useSelector( state => state.products.loading )
+    const error = useSelector( state => state.products.error )
 
     // Utilizar useDispatch y te crea una funcion
     const dispatch = useDispatch();
@@ -30,6 +34,9 @@ const NewProducts = () => {
             name,
             price
         })
+
+        // Redireccionar
+        history.push('/')
     }
 
     return (
@@ -73,6 +80,9 @@ const NewProducts = () => {
                                 className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
                             >Agregar</button>
                         </form>
+
+                        { loading ? <p>Cargando...</p> : null }
+                        { error ? <p className="alert alert-danger p2 mt-4 text-center">Hubo un error</p> : null }
                     </div>
                 </div>
             </div>

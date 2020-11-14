@@ -29,6 +29,11 @@
       "name": "Asado",
       "price": "460",
       "id": 6
+    },
+    {
+      "name": "Jugo de piña",
+      "price": "100",
+      "id": 7
     }
   ]
 }
