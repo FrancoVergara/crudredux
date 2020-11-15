@@ -29,8 +29,16 @@ export default (state = initialState, action) => {
                 loading: false,
                 product: [...state.products, action.payload]
             }
+        
+        case DOWNLOAD_PRODUCTS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                products: action.payload
+            }
 
         case ADD_PRODUCT_ERROR:
+        case DOWNLOAD_PRODUCTS_ERROR:
             return {
                 ...state,
                 loading: false,

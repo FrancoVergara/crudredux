@@ -56,9 +56,26 @@ const addProductError = () => ({
 export function getProductsAction(){
     return async (dispatch) => {
         dispatch( downloadProducts() )
+
+        try {
+            const response = await clientAxios.get('/products')
+            dispatch( downloadProductsSuccess(response) )
+    
+        } catch (error) {
+            dispatch( downloadProductsError() )
+        }
     }
 }
 
 const downloadProducts = () => ({
     type: DOWNLOAD_PRODUCTS
+})
+
+const downloadProductsSuccess = products => ({
+    type: DOWNLOAD_PRODUCTS_SUCCESS,
+    payload: products
+})
+
+const downloadProductsError = () => ({
+    type: DOWNLOAD_PRODUCTS_ERROR
 })
