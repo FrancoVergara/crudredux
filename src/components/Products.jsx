@@ -15,6 +15,7 @@ const Products = () => {
         const loadProducts = () => dispatch( getProductsAction() )
         loadProducts()
 
+        // eslint-disable-next-line
     }, [])
 
     // Obtener state
@@ -41,7 +42,7 @@ const Products = () => {
 
                 <tbody>
                     { products.length === 0 ? 'No hay productos' : (
-                        products.data.map( product => (
+                        products.map( product => (
                             <Product
                                 key={product.id}
                                 product={product}
