@@ -1,6 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { editProductAction } from '../actions/productsAction'
+import { useHistory } from 'react-router-dom'
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
 
 const EditProducts = () => {
+
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const [ product, saveProduct ] = useState({
+        name: '',
+        price: ''
+    })
+
+    const productedit = useSelector( state => state.products.editproduct )
+
+    // Llenar el state automaticamente
+    useEffect( () => {
+        saveProduct( productedit )
+    }, [productedit])
+
+    const onChangeForm = e => {
+        saveProduct({
+            ...product,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const { name, price } = product
+
+    const onSubmit = e => {
+        e.preventDefault()
+
+        dispatch( editProductAction(product) )
+        history.push('/')
+    }
+
     return (
         <div className="row justify-content-center">
             <div className="col-md-8">
@@ -10,7 +47,9 @@ const EditProducts = () => {
                             Editar Producto
                         </h2>
 
-                        <form>
+                        <form
+                            onSubmit={onSubmit}
+                        >
                             <div className="form-group">
                                 <label>Nombre Producto</label>
                                 <input
@@ -18,6 +57,8 @@ const EditProducts = () => {
                                     placeholder="Nombre Producto"
                                     className="form-control"
                                     name="name"
+                                    value={name}
+                                    onChange={onChangeForm}
                                 />
                             </div>
 
@@ -28,6 +69,8 @@ const EditProducts = () => {
                                     placeholder="Precio Producto"
                                     className="form-control"
                                     name="price"
+                                    value={price}
+                                    onChange={onChangeForm}
                                 />
                             </div>
 
