@@ -2,13 +2,18 @@
   "products": [
     {
       "name": "Asado",
-      "price": "700",
+      "price": "600",
       "id": 1
     },
     {
-      "name": "Jugo de naranja",
-      "price": "210",
-      "id": 2
+      "name": "Hamburguesas",
+      "price": "190",
+      "id": 4
+    },
+    {
+      "name": "Vodka",
+      "price": "680",
+      "id": 5
     }
   ]
 }
